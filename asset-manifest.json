@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/todo-list-redux-example-mod-6/static/css/main.3bae5359.css",
+    "main.js": "/todo-list-redux-example-mod-6/static/js/main.9de81cb8.js",
+    "index.html": "/todo-list-redux-example-mod-6/index.html",
+    "main.3bae5359.css.map": "/todo-list-redux-example-mod-6/static/css/main.3bae5359.css.map",
+    "main.9de81cb8.js.map": "/todo-list-redux-example-mod-6/static/js/main.9de81cb8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3bae5359.css",
+    "static/js/main.9de81cb8.js"
+  ]
+}
