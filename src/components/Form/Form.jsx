@@ -1,22 +1,21 @@
+import { useDispatch } from 'react-redux';
+import { addTask } from 'redux/actions';
 import { StyledForm, BtnSubmit, Input } from './Form.styled';
 
 const Form = () => {
-  const handleInput = e => {
-    console.log(e.target.value);
-  };
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    e.target.reset();
+    const form = e.target;
+    console.log(form.elements.text.value);
+    dispatch(addTask(form.elements.text.value));
+    form.reset();
   };
+
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        name="todo"
-        placeholder="text..."
-        onChange={handleInput}
-      />
+      <Input type="text" name="text" placeholder="text..." />
       <BtnSubmit type="submit">Add</BtnSubmit>
     </StyledForm>
   );

@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteTask, toggleCompleted } from 'redux/actions';
 import statusFilters from '../../redux/constants';
 import { getTasks, getStatusFilter } from '../../redux/selectors';
 import { Item, TodoText, Box } from './Todolist.styled';
@@ -19,14 +20,24 @@ const TodoList = () => {
   const statusFilter = useSelector(getStatusFilter);
   const visilbleTasks = getVisilbleTasks(tasks, statusFilter);
 
+  const dispatch = useDispatch();
+  const handleDelete = taskId => dispatch(deleteTask(taskId));
+  const handleToggle = taskId => dispatch(toggleCompleted(taskId));
+
   return (
     <Box>
       <ul>
         {visilbleTasks.map(task => (
           <Item key={task.id}>
-            <input type="checkbox" name="" id="" checked={task.completed} />
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => handleToggle(task.id)}
+            />
             <TodoText>{task.text}</TodoText>
-            <button type="button">X</button>
+            <button type="button" onClick={() => handleDelete(task.id)}>
+              X
+            </button>
           </Item>
         ))}
       </ul>
